@@ -46,6 +46,15 @@ public class ReportService {
         return reportRepo.findByUserOrderByWeekStartDesc(user).stream().map(this::toDTO).toList();
     }
 
+    public ReportDTO getReportById(UUID id, String email) {
+        User user = userRepo.findByEmail(email).orElseThrow();
+        var report = reportRepo.findById(id).orElseThrow();
+        if (!report.getUser().getId().equals(user.getId()) && user.getRole() != User.Role.MANAGER) {
+            throw new SecurityException("Forbidden");
+        }
+        return toDTO(report);
+    }
+
     @Transactional
     public ReportDTO createReport(String email, ReportRequest req) {
         User user = userRepo.findByEmail(email).orElseThrow();
