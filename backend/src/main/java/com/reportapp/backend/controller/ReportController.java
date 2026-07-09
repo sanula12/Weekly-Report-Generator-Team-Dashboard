@@ -21,6 +21,15 @@ public class ReportController {
         return ResponseEntity.ok(reportService.getMyReports(auth.getName()));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getReportById(Authentication auth, @PathVariable UUID id) {
+        try {
+            return ResponseEntity.ok(reportService.getReportById(id, auth.getName()));
+        } catch (SecurityException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+    }
+
     @PostMapping
     public ResponseEntity<?> create(Authentication auth, @RequestBody ReportService.ReportRequest req) {
         return ResponseEntity.ok(reportService.createReport(auth.getName(), req));
