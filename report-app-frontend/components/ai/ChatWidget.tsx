@@ -54,7 +54,7 @@ export default function ChatWidget() {
               </div>
               <div>
                 <h3 className="font-bold text-white text-sm">AI Assistant</h3>
-                <p className="text-xs" style={{ color: 'oklch(0.65 0.02 255)' }}>Powered by GPT-4o-mini</p>
+               
               </div>
             </div>
             <button onClick={() => setOpen(false)} className="p-1 rounded-lg hover:bg-white/10 text-white">

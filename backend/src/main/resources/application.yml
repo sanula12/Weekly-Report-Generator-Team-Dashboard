@@ -30,8 +30,8 @@ app:
   jwt:
     secret: your-super-secret-key-minimum-32-chars-long-1234
     expiration: 86400000
-  openai:
-    api-key: ${OPENAI_API_KEY:}
+  groq:
+    api-key: ${GROQ_API_KEY}
 
 server:
   port: 8080

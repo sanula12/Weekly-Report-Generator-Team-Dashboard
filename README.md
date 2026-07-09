@@ -8,7 +8,7 @@ TeamPulse is a comprehensive, full-stack application that enables team members t
 
 * **Backend:** Spring Boot 3, Java 21, PostgreSQL, JWT Authentication, Spring Data JPA.
 * **Frontend:** Next.js 16 (App Router), Tailwind CSS v4, Recharts, Lucide React, Axios.
-* **AI Integration:** OpenAI API (GPT-4o-mini) via Spring WebClient/RestClient.
+* **AI Integration:** Llama 3 (via Groq API) integrated in Spring Boot.
 
 ## Prerequisites
 
@@ -18,19 +18,24 @@ TeamPulse is a comprehensive, full-stack application that enables team members t
 
 ## Setup Instructions
 
-### 1. Database Configuration
-Create a PostgreSQL database named `report_app`. The application uses Flyway for migrations, so tables will be created automatically on startup.
+### 1) Running database
+Create a PostgreSQL database named `report_app` locally on port `5432` with username `postgres` and password `Kumuisha#123`. 
+The application uses Flyway for migrations, so tables will be created automatically on startup.
 
-### 2. Backend Setup
+### 2) Installing dependencies
+For the backend, dependencies are handled automatically via Maven (`./mvnw`).
+For the frontend, navigate to the `report-app-frontend` directory and run:
+```bash
+npm install
+```
+
+### 3) Running backend
 Navigate to the `backend` directory.
 
-You must set the OpenAI API Key as an environment variable for the AI features to work.
-```bash
-# Windows (PowerShell)
-$env:OPENAI_API_KEY="your-api-key-here"
-
-# Mac/Linux
-export OPENAI_API_KEY="your-api-key-here"
+To enable the AI Chat feature, open `backend/src/main/resources/application.yml` and paste your free Groq API key:
+```yaml
+  groq:
+    api-key: your-groq-api-key-here
 ```
 
 Start the Spring Boot application using Maven:
@@ -39,13 +44,8 @@ Start the Spring Boot application using Maven:
 ```
 The backend will be available at `http://localhost:8080`. API documentation (Swagger) is available at `http://localhost:8080/swagger-ui/index.html`.
 
-### 3. Frontend Setup
+### 4) Running frontend
 Navigate to the `report-app-frontend` directory.
-
-Install dependencies:
-```bash
-npm install
-```
 
 Start the development server:
 ```bash
