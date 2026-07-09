@@ -23,7 +23,8 @@ public class User {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "user_role")
+    @Column(name = "role", columnDefinition = "user_role")
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
     private Role role = Role.MEMBER;
 
     public enum Role { MEMBER, MANAGER }
