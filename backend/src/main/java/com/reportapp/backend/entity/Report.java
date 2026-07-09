@@ -37,7 +37,8 @@ public class Report {
     private String notes;
 
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "report_status")
+    @Column(name = "status", columnDefinition = "report_status")
+    @org.hibernate.annotations.JdbcTypeCode(org.hibernate.type.SqlTypes.NAMED_ENUM)
     private Status status = Status.DRAFT;
 
     private LocalDateTime submittedAt;
