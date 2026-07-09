@@ -18,22 +18,22 @@ import java.util.*;
 @Transactional(readOnly = true)
 public class AiService {
 
-    @Value("${app.openai.api-key:}")
-    private String openAiApiKey;
+    @Value("${app.groq.api-key:}")
+    private String apiKey;
 
     private final ReportRepository reportRepo;
     private final UserRepository userRepo;
 
     public String chat(String message, String userEmail, String role) {
-        if (openAiApiKey == null || openAiApiKey.isBlank()) {
-            return "\u26a0\ufe0f AI Assistant is not configured. Please set the OPENAI_API_KEY environment variable on the backend server.";
+        if (apiKey == null || apiKey.isBlank()) {
+            return "\u26a0\ufe0f AI Assistant is not configured. Please set the GROQ_API_KEY environment variable on the backend server.";
         }
 
         String context = buildContext(userEmail, role);
         String systemPrompt = buildSystemPrompt(context, role);
 
         var requestBody = Map.of(
-                "model", "gpt-4o-mini",
+                "model", "llama-3.1-8b-instant",
                 "messages", List.of(
                         Map.of("role", "system", "content", systemPrompt),
                         Map.of("role", "user", "content", message)
@@ -46,8 +46,8 @@ public class AiService {
             @SuppressWarnings("unchecked")
             Map<String, Object> response = RestClient.create()
                     .post()
-                    .uri("https://api.openai.com/v1/chat/completions")
-                    .header("Authorization", "Bearer " + openAiApiKey)
+                    .uri("https://api.groq.com/openai/v1/chat/completions")
+                    .header("Authorization", "Bearer " + apiKey)
                     .header("Content-Type", "application/json")
                     .body(requestBody)
                     .retrieve()

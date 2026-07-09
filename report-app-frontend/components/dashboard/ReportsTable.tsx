@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Report, User, Project } from '@/lib/types';
 import { getDashboardReports } from '@/lib/api';
 import { Input } from '@/components/ui/input';
@@ -43,6 +44,8 @@ export default function ReportsTable({ users, projects }: ReportsTableProps) {
   }, [userId, projectId, weekStart, weekEnd]);
 
   const inputStyle = { background: 'oklch(0.22 0.02 255)', borderColor: 'oklch(1 0 0 / 12%)', color: 'white' };
+
+  const router = useRouter();
 
   return (
     <div className="space-y-6">
@@ -107,7 +110,7 @@ export default function ReportsTable({ users, projects }: ReportsTableProps) {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {reports.map(r => (
-              <ReportCard key={r.id} report={r} />
+              <ReportCard key={r.id} report={r} onView={(id) => router.push(`/dashboard/reports/${id}`)} />
             ))}
           </div>
         )}

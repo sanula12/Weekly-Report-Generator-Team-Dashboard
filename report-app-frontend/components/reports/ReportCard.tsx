@@ -6,6 +6,7 @@ interface ReportCardProps {
   onSubmit?: (id: string) => void;
   onEdit?: (id: string) => void;
   onDelete?: (id: string) => void;
+  onView?: (id: string) => void;
 }
 
 const statusConfig = {
@@ -14,7 +15,7 @@ const statusConfig = {
   LATE: { label: 'Late', color: 'oklch(0.646 0.22 31)', bg: 'oklch(0.646 0.22 31 / 12%)', icon: AlertCircle },
 };
 
-export default function ReportCard({ report, onSubmit, onEdit, onDelete }: ReportCardProps) {
+export default function ReportCard({ report, onSubmit, onEdit, onDelete, onView }: ReportCardProps) {
   const status = statusConfig[report.status] || statusConfig.DRAFT;
   const StatusIcon = status.icon;
 
@@ -68,6 +69,15 @@ export default function ReportCard({ report, onSubmit, onEdit, onDelete }: Repor
           {report.hoursWorked && <><Clock className="w-3 h-3" /><span>{report.hoursWorked}h worked</span></>}
         </div>
         <div className="flex gap-2">
+          {onView && (
+            <button
+              onClick={() => onView(report.id)}
+              className="px-3 py-1.5 rounded-lg text-xs font-bold transition-colors"
+              style={{ background: 'oklch(0.585 0.207 264)', color: 'white' }}
+            >
+              View Full Report
+            </button>
+          )}
           {onEdit && (
             <button
               onClick={() => onEdit(report.id)}

@@ -37,37 +37,39 @@ export default function MemberStatusTable({ users, reports }: MemberStatusTableP
         <h3 className="text-lg font-bold text-white">Submission Status (This Week)</h3>
         <p className="text-sm mt-1" style={{ color: 'oklch(0.65 0.02 255)' }}>Track who has completed their weekly reports.</p>
       </div>
-      <table className="w-full text-left text-sm">
-        <thead style={{ background: 'oklch(0.16 0.018 255)' }}>
-          <tr>
-            <th className="px-6 py-4 font-semibold text-white">Team Member</th>
-            <th className="px-6 py-4 font-semibold text-white">Role</th>
-            <th className="px-6 py-4 font-semibold text-white">Status</th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-white/10">
-          {memberStatuses.map(({ user, status }) => {
-            const display = getStatusDisplay(status);
-            const Icon = display.icon;
-            return (
-              <tr key={user.id} className="hover:bg-white/5 transition-colors">
-                <td className="px-6 py-4 font-medium text-white">{user.name}</td>
-                <td className="px-6 py-4" style={{ color: 'oklch(0.65 0.02 255)' }}>
-                  {user.role === 'MANAGER' ? 'Manager' : 'Member'}
-                </td>
-                <td className="px-6 py-4">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium" style={{
-                    background: display.bg, color: display.color
-                  }}>
-                    <Icon className="w-3 h-3" />
-                    {display.label}
-                  </span>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="w-full text-left text-sm min-w-[500px]">
+          <thead style={{ background: 'oklch(0.16 0.018 255)' }}>
+            <tr>
+              <th className="px-6 py-4 font-semibold text-white">Team Member</th>
+              <th className="px-6 py-4 font-semibold text-white">Role</th>
+              <th className="px-6 py-4 font-semibold text-white">Status</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-white/10">
+            {memberStatuses.map(({ user, status }) => {
+              const display = getStatusDisplay(status);
+              const Icon = display.icon;
+              return (
+                <tr key={user.id} className="hover:bg-white/5 transition-colors">
+                  <td className="px-6 py-4 font-medium text-white whitespace-nowrap">{user.name}</td>
+                  <td className="px-6 py-4 whitespace-nowrap" style={{ color: 'oklch(0.65 0.02 255)' }}>
+                    {user.role === 'MANAGER' ? 'Manager' : 'Member'}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium" style={{
+                      background: display.bg, color: display.color
+                    }}>
+                      <Icon className="w-3 h-3" />
+                      {display.label}
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
