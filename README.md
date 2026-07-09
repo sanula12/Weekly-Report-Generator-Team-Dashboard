@@ -1,4 +1,4 @@
-# TeamPulse — Weekly Report Generator & Team Dashboard
+# TeamPulse - Weekly Report Generator & Team Dashboard
 
 This repository contains the source code for the "Weekly Report Generator & Team Dashboard" technical assignment for Sisenco Digital (Pvt) Ltd. 
 
