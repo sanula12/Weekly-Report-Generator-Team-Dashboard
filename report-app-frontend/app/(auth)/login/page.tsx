@@ -47,7 +47,7 @@ export default function LoginPage() {
           <span style={{ color: 'oklch(0.66 0.19 264)' }}>in one place.</span>
         </h1>
         <p className="text-lg text-white/60 max-w-md leading-relaxed">
-          Submit weekly reports, track team progress, and uncover insights—all from a single, beautiful dashboard.
+          Submit weekly reports, track team progress, and uncover insights-all from a single, beautiful dashboard.
         </p>
         <div className="mt-12 flex gap-8">
           {[['Weekly Reports', 'Track work done'], ['Team Dashboard', 'Manager insights'], ['AI Assistant', 'Smart Q&A']].map(([title, desc]) => (

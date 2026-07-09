@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
@@ -20,8 +21,16 @@ const managerNav = [
 export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const name = getName() || 'User';
-  const role = getRole();
+  const [name, setName] = useState('User');
+  const [role, setRole] = useState('MEMBER');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setName(getName() || 'User');
+    setRole(getRole() || 'MEMBER');
+    setMounted(true);
+  }, []);
+
   const navItems = role === 'MANAGER' ? managerNav : memberNav;
 
   const handleLogout = () => {
@@ -30,6 +39,15 @@ export default function Sidebar() {
   };
 
   const initials = name.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase();
+
+  if (!mounted) {
+    return (
+      <aside className="fixed inset-y-0 left-0 z-50 w-60 flex flex-col" style={{
+        background: 'oklch(0.16 0.018 255)',
+        borderRight: '1px solid oklch(1 0 0 / 8%)'
+      }} />
+    );
+  }
 
   return (
     <aside className="fixed inset-y-0 left-0 z-50 w-60 flex flex-col" style={{

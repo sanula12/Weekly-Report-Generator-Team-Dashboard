@@ -29,7 +29,7 @@ export default function ReportCard({ report, onSubmit, onEdit, onDelete }: Repor
             <Calendar className="w-3.5 h-3.5 flex-shrink-0" style={{ color: 'oklch(0.66 0.19 264)' }} />
             <span className="text-sm font-semibold text-white">
               {new Date(report.weekStart).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-              {' — '}
+              {' - '}
               {new Date(report.weekEnd).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
             </span>
           </div>

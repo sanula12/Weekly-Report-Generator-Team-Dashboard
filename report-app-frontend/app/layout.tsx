@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
-  title: "TeamPulse — Weekly Report Generator & Team Dashboard",
+  title: "TeamPulse - Weekly Report Generator & Team Dashboard",
   description: "Streamline your team's weekly reporting. Submit work reports, track progress, and gain insights through a powerful manager dashboard.",
 };
 
