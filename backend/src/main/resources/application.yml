@@ -31,7 +31,7 @@ app:
     secret: your-super-secret-key-minimum-32-chars-long-1234
     expiration: 86400000
   groq:
-    api-key: ${GROQ_API_KEY}
+    api-key: [groq key]
 
 server:
   port: 8080

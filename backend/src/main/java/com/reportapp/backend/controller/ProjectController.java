@@ -17,8 +17,16 @@ public class ProjectController {
     private final ProjectService projectService;
 
     @GetMapping
-    public ResponseEntity<?> list() {
-        return ResponseEntity.ok(projectService.getAllProjects());
+    public ResponseEntity<?> list(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(required = false) String search,
+            @RequestParam(defaultValue = "false") boolean all) {
+        if (all) {
+            // Support for dropdowns that need all projects
+            return ResponseEntity.ok(projectService.getAllProjects());
+        }
+        return ResponseEntity.ok(projectService.searchProjects(search, org.springframework.data.domain.PageRequest.of(page, size)));
     }
 
     @PostMapping

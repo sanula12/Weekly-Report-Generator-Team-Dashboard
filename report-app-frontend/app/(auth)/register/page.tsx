@@ -97,23 +97,9 @@ export default function RegisterPage() {
                 className="placeholder:text-white/30"
               />
             </div>
-            <div className="space-y-2">
-              <Label style={{ color: 'oklch(0.8 0.01 255)' }} htmlFor="role">Role</Label>
-              <select
-                id="role"
-                value={form.role}
-                onChange={e => setForm({ ...form, role: e.target.value })}
-                required
-                className="w-full h-9 rounded-md px-2.5 text-sm text-white"
-                style={{ background: 'oklch(0.22 0.02 255)', border: '1px solid oklch(1 0 0 / 12%)' }}
-              >
-                <option value="MEMBER">Team Member</option>
-                <option value="MANAGER">Manager / Admin</option>
-              </select>
-            </div>
             <Button
               type="submit"
-              className="w-full h-11 font-semibold text-base mt-2"
+              className="w-full h-11 font-semibold text-base mt-6"
               style={{ background: 'oklch(0.585 0.207 264)', color: 'white' }}
               disabled={loading}
             >

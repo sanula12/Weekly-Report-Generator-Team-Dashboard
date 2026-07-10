@@ -34,6 +34,7 @@ Navigate to the `backend` directory.
 
 To enable the AI Chat feature, open `backend/src/main/resources/application.yml` and paste your free Groq API key:
 ```yaml
+app:
   groq:
     api-key: your-groq-api-key-here
 ```
@@ -57,7 +58,7 @@ The frontend will be available at `http://localhost:3000`.
 * **Role-Based Access Control:** Secure JWT authentication for `MEMBER` and `MANAGER` roles. Route protection is handled seamlessly via Next.js middleware.
 * **Member Portal:** Dedicated workflows for members to draft, edit, and submit weekly reports (tasks completed, blockers, hours worked).
 * **Manager Dashboard:** Real-time analytics, compliance rate tracking, hours-by-project bar charts, and a team activity feed.
-* **AI Assistant:** An integrated GPT-4o-mini chatbot for managers to query team productivity and report insights.
+* **AI Assistant:** An integrated Llama 3 chatbot (via Groq) for team members to get help drafting reports.
 * **Premium UI/UX:** A stunning interface built entirely from scratch with raw Tailwind v4 (glassmorphism, vibrant dark mode, and micro-animations).
 
 ## Deliverables
