@@ -62,6 +62,6 @@ The frontend will be available at `http://localhost:3000`.
 * **Premium UI/UX:** A stunning interface built entirely from scratch with raw Tailwind v4 (glassmorphism, vibrant dark mode, and micro-animations).
 
 ## Deliverables
-- **ER Diagram:** Included in the presentation / documentation.
-- **Video Demo:** [Insert Google Drive Link Here]
-- **Presentation:** [Insert Google Slides Link Here]
+- **ER Diagram:** https://mermaid.ai/view/a94c0413-fc4e-48c1-b173-7f2f044bf3ba
+- **Video Demo:** https://drive.google.com/file/d/1hYW1D1l03FNAvh1Ade1jXJJkLx4llqPk/view?usp=sharing
+- **Presentation:** https://docs.google.com/presentation/d/e/2PACX-1vR3lNDjEAUzwrBRnFOBh6hFGkx1vGaPuDH_o05tKIX-WdYQsTkM9uIvrmKd385JlWy7FueNMSnczXMS/pub?start=false&loop=false&delayms=3000&slide=id.p1
