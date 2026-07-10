@@ -21,10 +21,16 @@ export const deleteReport = (id: string) => api.delete(`/reports/${id}`);
 export const getReportById = (id: string) => api.get<Report>(`/reports/${id}`).then(r => r.data);
 
 // Projects
-export const getProjects = () => api.get<Project[]>('/projects').then(r => r.data);
+export const getProjects = () => api.get<Project[]>('/projects?all=true').then(r => r.data);
+export const getPaginatedProjects = (params?: { page?: number; size?: number; search?: string }) => api.get<any>('/projects', { params }).then(r => r.data);
 export const createProject = (data: { name: string; description?: string }) => api.post<Project>('/projects', data).then(r => r.data);
 export const updateProject = (id: string, data: { name: string; description?: string }) => api.put<Project>(`/projects/${id}`, data).then(r => r.data);
 export const deleteProject = (id: string) => api.delete(`/projects/${id}`);
+
+// Users (CRUD for Manager)
+export const getUsers = (params?: { page?: number; size?: number; search?: string; role?: string }) => api.get<any>('/users', { params }).then(r => r.data);
+export const updateUser = (id: string, data: { name: string; email: string; role?: string }) => api.put<User>(`/users/${id}`, data).then(r => r.data);
+export const deleteUser = (id: string) => api.delete(`/users/${id}`);
 
 // Dashboard (Manager)
 export const getDashboardReports = (params?: { userId?: string; projectId?: string; weekStart?: string; weekEnd?: string }) =>

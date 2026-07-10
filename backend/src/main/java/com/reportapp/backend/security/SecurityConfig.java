@@ -36,7 +36,7 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/webjars/**"
                         ).permitAll()
-                        .requestMatchers("/api/dashboard/**", "/api/team/**").hasRole("MANAGER")
+                        .requestMatchers("/api/dashboard/**", "/api/users/**").hasRole("MANAGER")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
